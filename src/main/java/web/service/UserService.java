@@ -1,36 +1,17 @@
 package web.service;
 
 import java.util.List;
-import org.springframework.stereotype.Service;
-import web.dao.UserDao;
 import web.model.User;
 
-@Service
-public class UserService {
+public interface UserService {
 
-    private final UserDao userDao;
+    List<User> findAll();
 
-    public UserService(UserDao userDao) {
-        this.userDao = userDao;
-    }
+    User findById(long id);
 
-    public List<User> findAll() {
-        return userDao.findAll();
-    }
+    void save(User user);
 
-    public User findById(long id) {
-        return userDao.findById(id);
-    }
+    void update(long id, User updatedUser);
 
-    public void save(User user) {
-        userDao.save(user);
-    }
-
-    public void update(long id, User updatedUser) {
-        userDao.update(id, updatedUser);
-    }
-
-    public void delete(long id) {
-        userDao.delete(id);
-    }
+    void delete(long id);
 }
